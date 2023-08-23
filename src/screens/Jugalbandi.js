@@ -5,7 +5,7 @@ import {
   Col, Row, Layout, message,
 } from 'antd';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 import '../App.css';
 import config from '../utlities/config';
 import MessageParser from '../utlities/MessageParser';
@@ -110,7 +110,15 @@ const Jugalbandi = () => {
               )}
             </div>
           </Col>
-          <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
+          <Col className="gutter-row chat-bot-col" xs={24} sm={24} md={12} lg={12}>
+            <div style={{ height: '18px', margin: '16px 0 ' }}>
+              <h2>
+                Query and Response
+                {' '}
+                <span style={{ fontSize: '12px', color: '#bababa' }}> Type your query and view response</span>
+                {' '}
+              </h2>
+            </div>
             <Chatbot
               className="chatbot-container"
               config={config}
@@ -123,9 +131,10 @@ const Jugalbandi = () => {
           </Col>
         </Row>
       </Content>
-      <Footer
-        footerText="Agami India, Ahuja Palace, Richmond Rd, Langford Gardens, Bengaluru, Karnataka 560025, team@agami.in"
-      />
+      {/* <Footer
+        footerText="Agami India, Ahuja Palace, Richmond Rd, Langford Gardens,
+         Bengaluru, Karnataka 560025, team@agami.in"
+      /> */}
     </Layout>
   );
 };

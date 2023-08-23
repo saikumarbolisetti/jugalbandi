@@ -1,36 +1,42 @@
 .App-leftGrid , .App-rightGrid{
-    margin-top: 1%;
-    margin-left: 2.5%;
     margin-right: 2.5%;
 }
 .App-grid{
-  margin: 1.5% 1.5% 0 1.5%;
+  margin: 0 1.5%;
 overflow-y: hidden;
 }
 .App-Footer{
   margin-top: 2%;
 }
+
+.chat-bot-col {
+  padding: 10px 1%;
+  background-color: white;
+}
+
 .react-chatbot-kit-chat-container{
     background-color: white;
-    border: 1px solid #754a76;
+    border: 1px solid #838383;
     border-radius: 1%;
-    height: 500px;
+    height: calc(100vh - 190px);
     /* max-height: 450px; */
     margin-top: 5%;
     padding: 5%;
-    overflow-y:auto;
+    padding-right: 2%;
+    padding-bottom: 0;
+    overflow-y: hidden;
     margin-bottom: 5%;
   }
   .react-chatbot-kit-chat-inner-container {
-    height: 90%;
+    height: 88%;
   }
   .react-chatbot-kit-chat-message-container {
     height: 100%;
-    padding-right: 15px;
+    padding-right: 25px;
     overflow-y: auto;
   }
   .react-chatbot-kit-chat-input-container {
-    height: 67px;
+    height: 80px;
     background-color: #754a75;
     display: flex;
     align-items: center;
