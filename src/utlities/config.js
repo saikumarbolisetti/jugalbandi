@@ -5,7 +5,7 @@ import BotAvatar from '../components/BotAvatar';
 
 const config = {
   botName: 'Jugalbandi',
-  initialMessages: [createChatBotMessage('Hello, ask me a question')],
+  initialMessages: [createChatBotMessage('Select the document and type in your query')],
   BOT_AVATAR_PATH: '',
   customComponents: {
     botAvatar: (props) => <BotAvatar props={props} />,

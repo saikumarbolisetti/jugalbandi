@@ -27,11 +27,13 @@ const readPdf = async (link) => {
 
 const uploadFile = async (url, file) => {
   try {
-    const response = await fetch(url, { method: 'POST', body: file })
-    return await response.json()
-  }catch (e) {
-    return new Error('Failed to upload')
+    const response = await fetch(url, { method: 'POST', body: file });
+    return await response.json();
+  } catch (e) {
+    return new Error('Failed to upload');
   }
-}
+};
 
-export default { get, readPdf, post, uploadFile };
+export default {
+  get, readPdf, post, uploadFile,
+};

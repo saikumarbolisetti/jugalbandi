@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import '../components/Header.css';
 import Chatbot from 'react-chatbot-kit';
-import { Col, Row, Layout } from 'antd';
+import {
+  Col, Row, Layout, message,
+} from 'antd';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../App.css';
@@ -15,7 +17,6 @@ import Api from '../API/Api';
 import uuidDatabase from '../UuidDatabase';
 import SelectBox from '../components/UuidSelect';
 import FileUpload from '../components/FileUpload';
-import { message } from 'antd';
 
 const { Content } = Layout;
 const Jugalbandi = () => {
@@ -41,8 +42,7 @@ const Jugalbandi = () => {
         data.map((dataSource) => Api.readPdf(dataSource.source_text_link).then((response) => ({
           dataSource,
           extractedTextResponse: response,
-        }))
-        )
+        }))),
       ).then((results) => {
         results.forEach((result) => {
           const { dataSource, extractedTextResponse } = result;
@@ -58,18 +58,17 @@ const Jugalbandi = () => {
     name: 'file',
     multiple: true,
     customRequest: async (e) => {
-      
-      const form_data = new FormData();
-      form_data.append("files", e.file);
+      const formData = new FormData();
+      formData.append('files', e.file);
 
-      const result = await Api.uploadFile('https://api.jugalbandi.ai/upload-files', form_data);
+      const result = await Api.uploadFile('https://api.jugalbandi.ai/upload-files', formData);
 
       if (result instanceof Error) {
         message.error(' file upload failed');
       } else {
         message.success('file uploaded successfully.');
         console.log('uuid: ', result.uuid_number);
-        setUuid(result.uuid_number)
+        setUuid(result.uuid_number);
       }
     },
     onDrop(e) {
@@ -84,9 +83,13 @@ const Jugalbandi = () => {
         <Row className="App-grid">
           <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
             <div className="App-leftGrid" style={{ backgroundColor: 'white', padding: '2%', borderRadius: '1%' }}>
-              <h2>Document Selection <span style={{ fontSize: '12px', color: '#bababa' }}> Select or Upload Document</span> </h2>
+              <h2>
+                Document Selection
+                {' '}
+                <span style={{ fontSize: '12px', color: '#bababa' }}> Select or Upload Document</span>
+                {' '}
+              </h2>
               <SelectBox
-
                 placeholder="Select existing document"
                 valueSelected={uuid}
                 onUpdateValue={onSetUuid}
