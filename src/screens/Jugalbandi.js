@@ -68,7 +68,7 @@ const Jugalbandi = () => {
       } else {
         message.success('file uploaded successfully.');
         console.log('uuid: ', result.uuid_number);
-        setUuid(result.uuid_number);
+        onSetUuid(result.uuid_number);
       }
     },
     onDrop(e) {
