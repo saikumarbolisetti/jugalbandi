@@ -36,7 +36,7 @@ overflow-y: hidden;
     overflow-y: auto;
   }
   .react-chatbot-kit-chat-input-container {
-    height: 80px;
+    height: 120px;
     background-color: #754a75;
     display: flex;
     align-items: center;
