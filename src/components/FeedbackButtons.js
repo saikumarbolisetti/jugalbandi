@@ -11,7 +11,7 @@ const LikeDislikeButton = ({
 }) => (
   <>
     {isLiked ? <Button type="text" shape="circle" icon={<LikeFilled style={{ color: '#754a76' }} />} onClick={onLiked} disabled={!isDisliked} />
-      : <Button type="text" shape="circle" icon={<LikeFilled style={{ color: '#ecc0ed' }} />} onClick={onLiked} disabled={!isDisliked} />}
+      : <Button type="text" shape="circle" icon={<LikeFilled style={{ color: '#b0dfc1' }} />} onClick={onLiked} disabled={!isDisliked} />}
     {!isDisliked ? <Button type="text" shape="circle" icon={<DislikeFilled style={{ color: '#754a76' }} />} onClick={onDisLiked} disabled={isLiked} />
       : <Button type="text" shape="circle" icon={<DislikeFilled style={{ color: '#ecc0ed' }} />} onClick={onDisLiked} disabled={isLiked} />}
   </>
@@ -43,7 +43,7 @@ const FeedbackButtons = () => {
   };
 
   return (
-    <div style={{ marginLeft: '20px' }}>
+    <div>
       {message !== '' ? <div style={{ marginLeft: '10px', marginTop: '5px', color: '#754a76' }}>{message}</div> : <LikeDislikeButton isLiked={isLiked} isDisliked={isDisliked} onLiked={onLiked} onDisLiked={onDisLiked} />}
 
     </div>

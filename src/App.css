@@ -51,6 +51,7 @@ overflow-y: hidden;
   .react-chatbot-kit-chat-bot-message-container{
     display: flex;
     justify-content: flex-start;
+    position: relative;
   }
 
   .react-chatbot-kit-chat-bot-message-container + :not([class^='react-chatbot-kit']) {
@@ -64,7 +65,8 @@ overflow-y: hidden;
   .react-chatbot-kit-chat-bot-message {
     display: flex;
     margin-bottom: 3%;
-    margin-left: 1%;
+    margin-left: 1px;
+    margin-top: 26px;
     padding: 7px;
     border-radius: 2%;
     box-shadow: 0px 3px 9px #9c9c9c;
@@ -75,12 +77,12 @@ overflow-y: hidden;
     display: flex;
     justify-content: flex-end;
     gap: 1%;
-    margin-top: 2%;
+    margin-bottom: 3%;
   }
 
   .react-chatbot-kit-user-chat-message {
     display: flex;
-    padding: 2%;
+    padding: 7px;
     background-color: #b8adbca6;
     box-shadow: 1px 2px 6px #9c9c9c;
     border-radius: 2%;
@@ -88,14 +90,17 @@ overflow-y: hidden;
     position:relative;
   }
 
-  .react-chatbot-kit-user-chat-message::after {
+  .react-chatbot-kit-user-chat-message::before {
     content: '';
     display: block;
-    position:absolute;
-    border-right: 5px gray;
-    border-bottom: 5px gray;
-    right: 0;
-    bottom: 0;
+    position: absolute;
+    border-bottom: 6px solid #d1cad4;
+    border-right: 6px solid #d1cad4;
+    right: min(15%, 15px);
+    bottom: -6px;
+    transform: rotate(45deg) skew(10deg, 10deg);
+    height: 6px;
+    width: 6px;
   }
   
   .react-chatbot-kit-chat-bot-avatar-letter{
@@ -132,4 +137,3 @@ overflow-y: hidden;
   padding-left: 2%;
   width: 100%;
 }
-  

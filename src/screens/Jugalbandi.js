@@ -78,7 +78,7 @@ const Jugalbandi = () => {
 
   return (
     <Layout>
-      <Content style={{ paddingBottom: '100px', backgroundColor: '#e8e7e6' }}>
+      <Content style={{ paddingBottom: '100px', backgroundColor: '#eff5f8' }}>
         <Header title="Jugalbandi" />
         <Row className="App-grid">
           <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
@@ -111,7 +111,7 @@ const Jugalbandi = () => {
             </div>
           </Col>
           <Col className="gutter-row chat-bot-col" xs={24} sm={24} md={12} lg={12}>
-            <div style={{ height: '18px', margin: '16px 0 ' }}>
+            <div style={{ margin: '16px 0 ' }}>
               <h2>
                 Query and Response
                 {' '}
