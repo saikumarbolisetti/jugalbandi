@@ -21,6 +21,7 @@ import FileUpload from '../components/FileUpload';
 const { Content } = Layout;
 const Jugalbandi = () => {
   const [uuid, setUuid] = useState('');
+  const [fileList, setFileList] = useState([]);
 
   const { data, loading, onLoading } = useContext(CustomContext);
   const [extractedText, setExtractedText] = useState({});
@@ -69,11 +70,18 @@ const Jugalbandi = () => {
         message.success('file uploaded successfully.');
         console.log('uuid: ', result.uuid_number);
         onSetUuid(result.uuid_number);
+        const uploadedFile = { name: e.file.name, status: 'done' };
+        setFileList([uploadedFile]);
       }
+    },
+    beforeUpload: (file) => {
+      const uploadingFile = { name: file.name, status: 'uploading' };
+      setFileList([...fileList, uploadingFile]);
     },
     onDrop(e) {
       console.log('Dropped files', e.dataTransfer.files);
     },
+    fileList,
   };
 
   return (
