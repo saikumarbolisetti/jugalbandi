@@ -22,9 +22,15 @@ const { Content } = Layout;
 const Jugalbandi = () => {
   const [uuid, setUuid] = useState('');
   const [fileList, setFileList] = useState([]);
+  const [dropdownOptions, setdropdownOptions] = useState(uuidDatabase);
 
   const { data, loading, onLoading } = useContext(CustomContext);
   const [extractedText, setExtractedText] = useState({});
+
+  const onUpdateDropdownOptions = (newOption) => {
+    setdropdownOptions((prevOptions) => [...prevOptions, newOption]);
+  };
+
   const onSetUuid = (number) => {
     setUuid(number);
 
@@ -61,6 +67,7 @@ const Jugalbandi = () => {
     customRequest: async (e) => {
       const formData = new FormData();
       formData.append('files', e.file);
+      
 
       const result = await Api.uploadFile('https://api.jugalbandi.ai/upload-files', formData);
 
@@ -68,10 +75,10 @@ const Jugalbandi = () => {
         message.error(' file upload failed');
       } else {
         message.success('file uploaded successfully.');
-        console.log('uuid: ', result.uuid_number);
         onSetUuid(result.uuid_number);
         const uploadedFile = { name: e.file.name, status: 'done' };
         setFileList([uploadedFile]);
+        onUpdateDropdownOptions({value: result.uuid_number, label: e.file.name});
       }
     },
     beforeUpload: (file) => {
@@ -101,7 +108,7 @@ const Jugalbandi = () => {
                 placeholder="Select existing document"
                 valueSelected={uuid}
                 onUpdateValue={onSetUuid}
-                options={uuidDatabase}
+                options={dropdownOptions}
                 onRefresh={onRefresh}
                 isSearchEnabled
                 hasClearButton
