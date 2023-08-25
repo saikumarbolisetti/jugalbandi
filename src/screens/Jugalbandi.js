@@ -23,10 +23,13 @@ const Jugalbandi = () => {
   const [uuid, setUuid] = useState('');
   const [fileList, setFileList] = useState([]);
   const [dropdownOptions, setdropdownOptions] = useState(uuidDatabase);
+  const [fileVisibility, setFileVisibility] = useState(true);
 
   const { data, loading, onLoading } = useContext(CustomContext);
   const [extractedText, setExtractedText] = useState({});
 
+  const onUpdateFileVisibility = (status) => setFileVisibility(status);
+  
   const onUpdateDropdownOptions = (newOption) => {
     setdropdownOptions((prevOptions) => [...prevOptions, newOption]);
   };
@@ -65,9 +68,9 @@ const Jugalbandi = () => {
     name: 'file',
     multiple: true,
     customRequest: async (e) => {
+      onUpdateFileVisibility(true)
       const formData = new FormData();
       formData.append('files', e.file);
-      
 
       const result = await Api.uploadFile('https://api.jugalbandi.ai/upload-files', formData);
 
@@ -78,7 +81,7 @@ const Jugalbandi = () => {
         onSetUuid(result.uuid_number);
         const uploadedFile = { name: e.file.name, status: 'done' };
         setFileList([uploadedFile]);
-        onUpdateDropdownOptions({value: result.uuid_number, label: e.file.name});
+        onUpdateDropdownOptions({ value: result.uuid_number, label: e.file.name });
       }
     },
     beforeUpload: (file) => {
@@ -89,6 +92,7 @@ const Jugalbandi = () => {
       console.log('Dropped files', e.dataTransfer.files);
     },
     fileList,
+    showUploadList: fileVisibility,
   };
 
   return (
@@ -110,6 +114,7 @@ const Jugalbandi = () => {
                 onUpdateValue={onSetUuid}
                 options={dropdownOptions}
                 onRefresh={onRefresh}
+                onUpdateFileVisibility={onUpdateFileVisibility}
                 isSearchEnabled
                 hasClearButton
               />

@@ -6,10 +6,11 @@ import React from 'react';
 
 const { Text } = Typography;
 const SelectBox = ({
-  valueSelected, onUpdateValue, options, onRefresh,
+  valueSelected, onUpdateValue, options, onRefresh, onUpdateFileVisibility,
   label, placeholder, isSearchEnabled, hasClearButton,
 }) => {
   const valueChangeHandler = (value) => {
+    onUpdateFileVisibility(false)
     if (onUpdateValue) {
       onUpdateValue(value);
     }
