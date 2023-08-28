@@ -26,16 +26,22 @@ overflow-y: hidden;
 }
 
 .chat-bot-col {
-  padding: 10px 1%;
+  padding: 15px 20px;
   background-color: white;
+}
+
+.chat-bot-header-container {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  min-height: 40px;
 }
 
 .react-chatbot-kit-chat-container{
     background-color: white;
     border: 1px solid #6F4D73;
-    border-radius: 1%;
-    height: calc(100vh - 150px);
-    margin-top: 5%;
+    border-radius: 2px;
+    height: calc(100vh - 134px);
     padding-bottom: 0;
     overflow-y: hidden;
     margin-bottom: 5%;
@@ -52,14 +58,15 @@ overflow-y: hidden;
   }
 
   .react-chatbot-kit-chat-message-container {
-    padding: 5%;
+    padding: 20px 28px;
     overflow-y: auto;
     flex: 1;
+    background-color: #F5F5F7;
   }
 
   .react-chatbot-kit-chat-input-container {
     height: 120px;
-    background-color: #754a75;
+    background-color: #6F4D73;
     display: flex;
     align-items: flex-start;
     padding: 20px 5%;
@@ -91,8 +98,10 @@ overflow-y: hidden;
     margin-top: 26px;
     padding: 7px;
     border-radius: 2%;
-    box-shadow: 0px 3px 9px #9c9c9c;
-    font-size: 15px;
+    /* box-shadow: 0px 3px 9px #9c9c9c; */
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+    font-size: 14px;
+    font-weight: 400;
   }
   
   .react-chatbot-kit-user-chat-message-container {
@@ -106,9 +115,9 @@ overflow-y: hidden;
     display: flex;
     padding: 7px;
     border-radius: 2px;
-    background: #d6c9e6;
-    box-shadow: 1px 2px 6px #9c9c9c;
-    font-size: 15px;
+    background: #ccc3d6;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+    font-size: 14px;
     position:relative;
   }
 
@@ -116,10 +125,10 @@ overflow-y: hidden;
     content: '';
     display: block;
     position: absolute;
-    border-bottom: 6px solid #d6c9e6;
-    border-right: 6px solid #d6c9e6;
+    border-bottom: 6px solid #ccc3d6;
+    border-right: 6px solid #ccc3d6;
     right: min(15%, 15px);
-    bottom: -6px;
+    bottom: -3px;
     transform: rotate(45deg) skew(10deg, 10deg);
     height: 6px;
     width: 6px;

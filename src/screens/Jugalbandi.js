@@ -136,7 +136,7 @@ const Jugalbandi = () => {
             </div>
           </Col>
           <Col className="gutter-row chat-bot-col" xs={24} sm={24} md={12} lg={12}>
-            <div style={{ margin: '16px 0 ' }}>
+            <div className="chat-bot-header-container">
               <h2 className="section-title">
                 Query and Response
                 {' '}
