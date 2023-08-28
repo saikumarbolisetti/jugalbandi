@@ -29,7 +29,7 @@ const Jugalbandi = () => {
   const [extractedText, setExtractedText] = useState({});
 
   const onUpdateFileVisibility = (status) => setFileVisibility(status);
-  
+
   const onUpdateDropdownOptions = (newOption) => {
     setdropdownOptions((prevOptions) => [...prevOptions, newOption]);
   };
@@ -68,7 +68,7 @@ const Jugalbandi = () => {
     name: 'file',
     multiple: true,
     customRequest: async (e) => {
-      onUpdateFileVisibility(true)
+      onUpdateFileVisibility(true);
       const formData = new FormData();
       formData.append('files', e.file);
 
@@ -97,18 +97,24 @@ const Jugalbandi = () => {
 
   return (
     <Layout>
-      <Content style={{ paddingBottom: '100px', backgroundColor: '#eff5f8' }}>
+      <Content style={{ paddingBottom: '100px', backgroundColor: '#F0F2F5' }}>
         <Header title="Jugalbandi" />
         <Row className="App-grid">
           <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
-            <div className="App-leftGrid" style={{ backgroundColor: 'white', padding: '2%', borderRadius: '1%' }}>
-              <h2>
+            <div
+              className="App-leftGrid"
+              style={{
+                backgroundColor: 'white', padding: '28px', paddingTop: '18px', borderRadius: '1%',
+              }}
+            >
+              <h2 className="section-title">
                 Document Selection
                 {' '}
-                <span style={{ fontSize: '12px', color: '#bababa' }}> Select or Upload Document</span>
+                <span className="section-sub-title"> Select or Upload Document</span>
                 {' '}
               </h2>
               <SelectBox
+                className="doc-selection-input"
                 placeholder="Select existing document"
                 valueSelected={uuid}
                 onUpdateValue={onSetUuid}
@@ -132,10 +138,10 @@ const Jugalbandi = () => {
           </Col>
           <Col className="gutter-row chat-bot-col" xs={24} sm={24} md={12} lg={12}>
             <div style={{ margin: '16px 0 ' }}>
-              <h2>
+              <h2 className="section-title">
                 Query and Response
                 {' '}
-                <span style={{ fontSize: '12px', color: '#bababa' }}> Type your query and view response</span>
+                <span className="section-sub-title"> Type your query and view response</span>
                 {' '}
               </h2>
             </div>

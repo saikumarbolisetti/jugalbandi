@@ -10,7 +10,7 @@ const SelectBox = ({
   label, placeholder, isSearchEnabled, hasClearButton,
 }) => {
   const valueChangeHandler = (value) => {
-    onUpdateFileVisibility(false)
+    onUpdateFileVisibility(false);
     if (onUpdateValue) {
       onUpdateValue(value);
     }
@@ -23,10 +23,10 @@ const SelectBox = ({
         <ConfigProvider
           theme={{
             token: {
-              colorBorder: 'black',
-              colorPrimaryBorderHover: 'black',
-              colorPrimaryBorder: 'black',
-              colorInfoBorder: 'black',
+              colorBorder: '#D9D9D9',
+              colorPrimaryBorderHover: '#D9D9D9',
+              colorPrimaryBorder: '#D9D9D9',
+              colorInfoBorder: '#D9D9D9',
             },
           }}
         >

@@ -9,6 +9,22 @@ overflow-y: hidden;
   margin-top: 2%;
 }
 
+.section-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.section-sub-title {
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 10px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.doc-selection-input {
+  border: 1px solid green;
+}
+
 .chat-bot-col {
   padding: 10px 1%;
   background-color: white;
@@ -16,33 +32,39 @@ overflow-y: hidden;
 
 .react-chatbot-kit-chat-container{
     background-color: white;
-    border: 1px solid #838383;
+    border: 1px solid #6F4D73;
     border-radius: 1%;
-    height: calc(100vh - 190px);
-    /* max-height: 450px; */
+    height: calc(100vh - 150px);
     margin-top: 5%;
-    padding: 5%;
-    padding-right: 2%;
     padding-bottom: 0;
     overflow-y: hidden;
     margin-bottom: 5%;
   }
+
+  .react-chatbot-kit-chat-container > div:first-child {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
   .react-chatbot-kit-chat-inner-container {
     height: 88%;
   }
+
   .react-chatbot-kit-chat-message-container {
-    height: 100%;
-    padding-right: 25px;
+    padding: 5%;
     overflow-y: auto;
+    flex: 1;
   }
+
   .react-chatbot-kit-chat-input-container {
     height: 120px;
     background-color: #754a75;
     display: flex;
-    align-items: center;
-    margin: 0 -6%;
-    padding: 0 6%;
+    align-items: flex-start;
+    padding: 20px 5%;
   }
+
   .react-chatbot-kit-chat-input-form {  
     flex: 1;
     display: flex;
@@ -83,9 +105,9 @@ overflow-y: hidden;
   .react-chatbot-kit-user-chat-message {
     display: flex;
     padding: 7px;
-    background-color: #b8adbca6;
+    border-radius: 2px;
+    background: #d6c9e6;
     box-shadow: 1px 2px 6px #9c9c9c;
-    border-radius: 2%;
     font-size: 15px;
     position:relative;
   }
@@ -94,8 +116,8 @@ overflow-y: hidden;
     content: '';
     display: block;
     position: absolute;
-    border-bottom: 6px solid #d1cad4;
-    border-right: 6px solid #d1cad4;
+    border-bottom: 6px solid #d6c9e6;
+    border-right: 6px solid #d6c9e6;
     right: min(15%, 15px);
     bottom: -6px;
     transform: rotate(45deg) skew(10deg, 10deg);
@@ -114,7 +136,7 @@ overflow-y: hidden;
   color: white;
   padding: 0 3%;
   display: flex;
-  border: 1px solid #777777;
+  border: none;
   column-gap: 6px;
   align-items: center;
   font-size: 1.1em;
@@ -125,7 +147,7 @@ overflow-y: hidden;
 }
 
 .react-chatbot-kit-chat-btn-send::before {
-  content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAACXBIWXMAAAsTAAALEwEAmpwYAAABJElEQVR4nK3SwSvlURjG8etOspjISilNzd1Z2uCu0CjNQrNAkqZmIaUUa/+BlZKYlCwsZobuLFEWFlZKlBUWCht/gP1HJy+dbnOvu5i33jq/33m+57zned9C4X8GujCNGQyi2AjUgjXcYR3LOMAVyu/Be9hBa9X/PtxiqBY4gnM019lP8Rcfqze3MIVO/MZulvOhuYnnHKEphw+jvA8YwHCWn0OzH5rkw2gOb2MinD7FWeSbCJcohe5nDo/hV6w/haj06gF6E1x4WfenKnJ4Fqs1zEqHXONLfH/HRi74E0ZcRNlLmEvl4QHjmbZS/eavWER3ugFPOMEPtIemGIam4Vn4Z89DWI7WHGMFm7jHY8xDpSac3ZTalmZ8Eh1owzf01IUbiWe08ZVFjkfwHgAAAABJRU5ErkJggg==");
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='14' viewBox='0 0 15 14' fill='none'%3E%3Cg clip-path='url(%23clip0_69_871)'%3E%3Cpath d='M8.45336 5.57809C8.09242 5.57809 7.81273 5.85778 7.81273 6.20309C7.81273 6.5484 8.09242 6.82809 8.45336 6.82809C8.78304 6.82809 9.06273 6.5484 9.06273 6.20309C9.06273 5.85778 8.78304 5.57809 8.45336 5.57809ZM4.07836 5.57809C3.71742 5.57809 3.43773 5.85778 3.43773 6.20309C3.43773 6.5484 3.71742 6.82809 4.07836 6.82809C4.40804 6.82809 4.68773 6.5484 4.68773 6.20309C4.68773 5.85778 4.40804 5.57809 4.07836 5.57809Z' fill='white'/%3E%3Cpath d='M13.4685 4.38937C12.7456 3.39428 11.7032 2.67729 10.5154 2.35812V2.35968C10.2482 2.06281 9.94667 1.78937 9.60917 1.54562C7.05135 -0.313754 3.46073 0.253434 1.59354 2.81125C0.0888539 4.88937 0.152916 7.68468 1.68729 9.67062L1.69979 11.7425C1.69979 11.7925 1.7076 11.8425 1.72323 11.8894C1.74288 11.952 1.77469 12.0101 1.81683 12.0604C1.85896 12.1107 1.91061 12.1522 1.9688 12.1826C2.027 12.2129 2.0906 12.2315 2.15597 12.2372C2.22135 12.2429 2.28721 12.2357 2.34979 12.2159L4.32792 11.5925C4.85135 11.7784 5.39198 11.8847 5.92948 11.9144L5.92167 11.9206C7.31386 12.9347 9.13885 13.2394 10.8123 12.6862L12.7982 13.3331C12.8482 13.3487 12.8998 13.3581 12.9529 13.3581C13.2295 13.3581 13.4529 13.1347 13.4529 12.8581V10.7644C14.8295 8.89562 14.8654 6.31281 13.4685 4.38937ZM4.54667 10.4831L4.35917 10.405L2.81229 10.8894L2.79667 9.26437L2.67167 9.12375C1.34979 7.51125 1.26229 5.18781 2.49979 3.48312C4.00604 1.4175 6.89354 0.961246 8.95292 2.45187C11.0185 3.95343 11.4764 6.83625 9.98417 8.88937C8.7326 10.6066 6.49198 11.2409 4.54667 10.4831ZM12.4373 10.2175L12.3123 10.3737L12.3279 11.9987L10.7967 11.4831L10.6092 11.5612C9.73417 11.8862 8.80135 11.9128 7.93729 11.6706L7.93417 11.6691C9.12172 11.3049 10.1591 10.5652 10.8904 9.56125C12.0842 7.91593 12.2779 5.84875 11.5842 4.08625L11.5935 4.0925C11.9529 4.35031 12.2826 4.67218 12.5623 5.06125C13.6967 6.6175 13.6326 8.73625 12.4373 10.2175Z' fill='white'/%3E%3Cpath d='M6.26586 5.57809C5.90492 5.57809 5.62523 5.85778 5.62523 6.20309C5.62523 6.5484 5.90492 6.82809 6.26586 6.82809C6.59554 6.82809 6.87523 6.5484 6.87523 6.20309C6.87523 5.85778 6.59554 5.57809 6.26586 5.57809Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_69_871'%3E%3Crect width='14' height='14' fill='white' transform='translate(0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
   margin-top: 3px;
 }
 
@@ -136,4 +158,10 @@ overflow-y: hidden;
 .react-chatbot-kit-chat-input {
   padding-left: 2%;
   width: 100%;
+  border: none;
+  outline: none;
+}
+
+.ant-upload-list {
+  display: none;
 }
