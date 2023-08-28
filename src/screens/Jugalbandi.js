@@ -66,7 +66,7 @@ const Jugalbandi = () => {
 
   const fileUploadProps = {
     name: 'file',
-    multiple: true,
+    multiple: false,
     customRequest: async (e) => {
       onUpdateFileVisibility(true);
       const formData = new FormData();
@@ -86,13 +86,18 @@ const Jugalbandi = () => {
     },
     beforeUpload: (file) => {
       const uploadingFile = { name: file.name, status: 'uploading' };
-      setFileList([...fileList, uploadingFile]);
+      setFileList([uploadingFile]);
     },
     onDrop(e) {
       console.log('Dropped files', e.dataTransfer.files);
     },
     fileList,
     showUploadList: fileVisibility,
+  };
+
+  const onSelectDropdownFile = (uid) => {
+    setFileList([]);
+    onSetUuid(uid);
   };
 
   return (
@@ -117,7 +122,7 @@ const Jugalbandi = () => {
                 className="doc-selection-input"
                 placeholder="Select existing document"
                 valueSelected={uuid}
-                onUpdateValue={onSetUuid}
+                onUpdateValue={onSelectDropdownFile}
                 options={dropdownOptions}
                 onRefresh={onRefresh}
                 onUpdateFileVisibility={onUpdateFileVisibility}
