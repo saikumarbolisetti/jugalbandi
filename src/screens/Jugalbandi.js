@@ -23,12 +23,9 @@ const Jugalbandi = () => {
   const [uuid, setUuid] = useState('');
   const [fileList, setFileList] = useState([]);
   const [dropdownOptions, setdropdownOptions] = useState(uuidDatabase);
-  const [fileVisibility, setFileVisibility] = useState(true);
 
   const { data, loading, onLoading } = useContext(CustomContext);
   const [extractedText, setExtractedText] = useState({});
-
-  const onUpdateFileVisibility = (status) => setFileVisibility(status);
 
   const onUpdateDropdownOptions = (newOption) => {
     setdropdownOptions((prevOptions) => [...prevOptions, newOption]);
@@ -68,7 +65,6 @@ const Jugalbandi = () => {
     name: 'file',
     multiple: false,
     customRequest: async (e) => {
-      onUpdateFileVisibility(true);
       const formData = new FormData();
       formData.append('files', e.file);
 
@@ -92,7 +88,6 @@ const Jugalbandi = () => {
       console.log('Dropped files', e.dataTransfer.files);
     },
     fileList,
-    showUploadList: fileVisibility,
   };
 
   const onSelectDropdownFile = (uid) => {
@@ -125,7 +120,6 @@ const Jugalbandi = () => {
                 onUpdateValue={onSelectDropdownFile}
                 options={dropdownOptions}
                 onRefresh={onRefresh}
-                onUpdateFileVisibility={onUpdateFileVisibility}
                 isSearchEnabled
                 hasClearButton
               />
