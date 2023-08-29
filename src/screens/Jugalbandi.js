@@ -18,26 +18,27 @@ import uuidDatabase from '../UuidDatabase';
 import SelectBox from '../components/UuidSelect';
 import FileUpload from '../components/FileUpload';
 
+const WARNING_MESSAGE = 'Please select a document from the dropdown or upload a new file.';
 const { Content } = Layout;
 const Jugalbandi = () => {
   const [uuid, setUuid] = useState('');
   const [fileList, setFileList] = useState([]);
   const [dropdownOptions, setdropdownOptions] = useState(uuidDatabase);
+  const [extractedText, setExtractedText] = useState({});
 
   const { data, loading, onLoading } = useContext(CustomContext);
-  const [extractedText, setExtractedText] = useState({});
 
   const disableAskButton = () => {
     const askButton = document.querySelector('.react-chatbot-kit-chat-btn-send');
     askButton.disabled = true;
     askButton.style.opacity = 0.5;
-    askButton.setAttribute('title', 'Please select some document or upload a new one.');
+    askButton.setAttribute('title', WARNING_MESSAGE);
   };
 
   const createInfoMessage = () => {
     const infoMessage = document.createElement('div');
     infoMessage.setAttribute('id', 'chat-input-info-msg');
-    infoMessage.innerText = 'Please select some document or upload a new one.';
+    infoMessage.innerText = WARNING_MESSAGE;
     return infoMessage;
   };
 
@@ -124,9 +125,9 @@ const Jugalbandi = () => {
       const result = await Api.uploadFile('https://api.jugalbandi.ai/upload-files', formData);
 
       if (result instanceof Error) {
-        message.error(' file upload failed');
+        message.error('File upload failed');
       } else {
-        message.success('file uploaded successfully.');
+        message.success('File uploaded successfully.');
         onSetUuid(result.uuid_number);
         const uploadedFile = { name: e.file.name, status: 'done' };
         setFileList([uploadedFile]);

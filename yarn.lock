@@ -10457,7 +10457,7 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
-react-chatbot-kit@^2.1.2:
+react-chatbot-kit@2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/react-chatbot-kit/-/react-chatbot-kit-2.1.2.tgz#c7e07760c37cde00d8ab5024472b9c10f4ece43a"
   integrity sha512-N9bhg7/YnVz3TcNaV19szfBqCLHfVevisdqg38QowOI1hxgebwejrkggGz+T04yJK2j7dhwNqHpx5nWMfugzZw==
