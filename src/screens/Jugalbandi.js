@@ -42,6 +42,28 @@ const Jugalbandi = () => {
     localStorage.removeItem('uuid');
   };
 
+  const enableAskButtonAndRemoveMsg = () => {
+    const askButton = document.querySelector('.react-chatbot-kit-chat-btn-send');
+    askButton.disabled = false;
+    askButton.style.opacity = 1;
+    askButton.setAttribute('title', '');
+    document.querySelector('#chat-input-info-msg')?.remove();
+  };
+
+  const disableAskButton = () => {
+    const askButton = document.querySelector('.react-chatbot-kit-chat-btn-send');
+    askButton.disabled = true;
+    askButton.style.opacity = 0.5;
+    askButton.setAttribute('title', 'Please select some document or upload a new one.');
+  };
+
+  const createInfoMessage = () => {
+    const infoMessage = document.createElement('div');
+    infoMessage.setAttribute('id', 'chat-input-info-msg');
+    infoMessage.innerText = 'Please select some document or upload a new one.';
+    return infoMessage;
+  };
+
   useEffect(() => {
     const txtContent = {};
     if (data !== []) {
@@ -61,6 +83,26 @@ const Jugalbandi = () => {
     }
   }, [data]);
 
+  useEffect(() => {
+    // document.addEventListener('input', (e) => {
+    //   if (e.target.className === 'react-chatbot-kit-chat-input') {
+    //     if (!localStorage.getItem('uuid')) {
+    //       disableAskButton();
+    //       if (!document.querySelector('#chat-input-info-msg')) {
+    //         e.target?.parentElement?.parentElement?.append(createInfoMessage());
+    //       }
+    //     } else {
+    //       enableAskButtonAndRemoveMsg();
+    //     }
+    //   }
+    // });
+    const inputParent = document.querySelector('.react-chatbot-kit-chat-input');
+    inputParent?.parentElement?.parentElement?.append(createInfoMessage());
+    disableAskButton();
+
+    return () => localStorage.removeItem('uuid');
+  }, []);
+
   const fileUploadProps = {
     name: 'file',
     multiple: false,
@@ -77,6 +119,7 @@ const Jugalbandi = () => {
         onSetUuid(result.uuid_number);
         const uploadedFile = { name: e.file.name, status: 'done' };
         setFileList([uploadedFile]);
+        enableAskButtonAndRemoveMsg();
         onUpdateDropdownOptions({ value: result.uuid_number, label: e.file.name });
       }
     },
@@ -84,15 +127,13 @@ const Jugalbandi = () => {
       const uploadingFile = { name: file.name, status: 'uploading' };
       setFileList([uploadingFile]);
     },
-    onDrop(e) {
-      console.log('Dropped files', e.dataTransfer.files);
-    },
     fileList,
   };
 
   const onSelectDropdownFile = (uid) => {
     setFileList([]);
     onSetUuid(uid);
+    enableAskButtonAndRemoveMsg();
   };
 
   return (

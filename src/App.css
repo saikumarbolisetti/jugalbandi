@@ -70,6 +70,7 @@ overflow-y: hidden;
     display: flex;
     align-items: flex-start;
     padding: 20px 5%;
+    position: relative;
   }
 
   .react-chatbot-kit-chat-input-form {  
@@ -93,7 +94,7 @@ overflow-y: hidden;
 
   .react-chatbot-kit-chat-bot-message {
     display: flex;
-    margin-bottom: 3%;
+    margin-bottom: 8px;
     margin-left: 1px;
     margin-top: 26px;
     padding: 7px;
@@ -173,4 +174,10 @@ overflow-y: hidden;
 
 .ant-upload-list {
   display: none;
+}
+
+#chat-input-info-msg {
+  color: #ffcaca;
+  position: absolute;
+  top: 66px;
 }
