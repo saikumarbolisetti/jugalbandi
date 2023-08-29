@@ -27,29 +27,6 @@ const Jugalbandi = () => {
   const { data, loading, onLoading } = useContext(CustomContext);
   const [extractedText, setExtractedText] = useState({});
 
-  const onUpdateDropdownOptions = (newOption) => {
-    setdropdownOptions((prevOptions) => [...prevOptions, newOption]);
-  };
-
-  const onSetUuid = (number) => {
-    setUuid(number);
-
-    localStorage.removeItem('uuid');
-    localStorage.setItem('uuid', number);
-  };
-  const onRefresh = () => {
-    setUuid('');
-    localStorage.removeItem('uuid');
-  };
-
-  const enableAskButtonAndRemoveMsg = () => {
-    const askButton = document.querySelector('.react-chatbot-kit-chat-btn-send');
-    askButton.disabled = false;
-    askButton.style.opacity = 1;
-    askButton.setAttribute('title', '');
-    document.querySelector('#chat-input-info-msg')?.remove();
-  };
-
   const disableAskButton = () => {
     const askButton = document.querySelector('.react-chatbot-kit-chat-btn-send');
     askButton.disabled = true;
@@ -62,6 +39,41 @@ const Jugalbandi = () => {
     infoMessage.setAttribute('id', 'chat-input-info-msg');
     infoMessage.innerText = 'Please select some document or upload a new one.';
     return infoMessage;
+  };
+
+  const showInfoMessage = () => {
+    if (!document.querySelector('#chat-input-info-msg')) {
+      const inputParent = document.querySelector('.react-chatbot-kit-chat-input-container');
+      inputParent?.append(createInfoMessage());
+    }
+  };
+
+  const onUpdateDropdownOptions = (newOption) => {
+    setdropdownOptions((prevOptions) => [...prevOptions, newOption]);
+  };
+
+  const onSetUuid = (number) => {
+    setUuid(number);
+
+    localStorage.removeItem('uuid');
+    localStorage.setItem('uuid', number);
+  };
+
+  const onRefresh = () => {
+    setUuid('');
+    localStorage.removeItem('uuid');
+    if (fileList.length === 0) {
+      showInfoMessage();
+      disableAskButton();
+    }
+  };
+
+  const enableAskButtonAndRemoveMsg = () => {
+    const askButton = document.querySelector('.react-chatbot-kit-chat-btn-send');
+    askButton.disabled = false;
+    askButton.style.opacity = 1;
+    askButton.setAttribute('title', '');
+    document.querySelector('#chat-input-info-msg')?.remove();
   };
 
   useEffect(() => {
@@ -96,9 +108,8 @@ const Jugalbandi = () => {
     //     }
     //   }
     // });
-    const inputParent = document.querySelector('.react-chatbot-kit-chat-input');
-    inputParent?.parentElement?.parentElement?.append(createInfoMessage());
     disableAskButton();
+    showInfoMessage();
 
     return () => localStorage.removeItem('uuid');
   }, []);
@@ -133,7 +144,9 @@ const Jugalbandi = () => {
   const onSelectDropdownFile = (uid) => {
     setFileList([]);
     onSetUuid(uid);
-    enableAskButtonAndRemoveMsg();
+    if (uid) {
+      enableAskButtonAndRemoveMsg();
+    }
   };
 
   return (
