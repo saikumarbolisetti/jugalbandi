@@ -77,6 +77,42 @@ const Jugalbandi = () => {
     document.querySelector('#chat-input-info-msg')?.remove();
   };
 
+  const fileUploadProps = {
+    name: 'file',
+    multiple: false,
+    accept: '.pdf, .doc, .docx, .txt',
+    customRequest: async (e) => {
+      const formData = new FormData();
+      formData.append('files', e.file);
+
+      const result = await Api.uploadFile('https://api.jugalbandi.ai/upload-files', formData);
+
+      if (result instanceof Error) {
+        message.error('File upload failed');
+      } else {
+        message.success('File uploaded successfully.');
+        onSetUuid(result.uuid_number);
+        const uploadedFile = { name: e.file.name, status: 'done' };
+        setFileList([uploadedFile]);
+        enableAskButtonAndRemoveMsg();
+        onUpdateDropdownOptions({ value: result.uuid_number, label: e.file.name });
+      }
+    },
+    beforeUpload: (file) => {
+      const uploadingFile = { name: file.name, status: 'uploading' };
+      setFileList([uploadingFile]);
+    },
+    fileList,
+  };
+
+  const onSelectDropdownFile = (uid) => {
+    setFileList([]);
+    onSetUuid(uid);
+    if (uid) {
+      enableAskButtonAndRemoveMsg();
+    }
+  };
+
   useEffect(() => {
     const txtContent = {};
     if (data !== []) {
@@ -110,58 +146,11 @@ const Jugalbandi = () => {
   }, [extractedText]);
 
   useEffect(() => {
-    // document.addEventListener('input', (e) => {
-    //   if (e.target.className === 'react-chatbot-kit-chat-input') {
-    //     if (!localStorage.getItem('uuid')) {
-    //       disableAskButton();
-    //       if (!document.querySelector('#chat-input-info-msg')) {
-    //         e.target?.parentElement?.parentElement?.append(createInfoMessage());
-    //       }
-    //     } else {
-    //       enableAskButtonAndRemoveMsg();
-    //     }
-    //   }
-    // });
     disableAskButton();
     showInfoMessage();
 
     return () => localStorage.removeItem('uuid');
   }, []);
-
-  const fileUploadProps = {
-    name: 'file',
-    multiple: false,
-    customRequest: async (e) => {
-      const formData = new FormData();
-      formData.append('files', e.file);
-
-      const result = await Api.uploadFile('https://api.jugalbandi.ai/upload-files', formData);
-
-      if (result instanceof Error) {
-        message.error('File upload failed');
-      } else {
-        message.success('File uploaded successfully.');
-        onSetUuid(result.uuid_number);
-        const uploadedFile = { name: e.file.name, status: 'done' };
-        setFileList([uploadedFile]);
-        enableAskButtonAndRemoveMsg();
-        onUpdateDropdownOptions({ value: result.uuid_number, label: e.file.name });
-      }
-    },
-    beforeUpload: (file) => {
-      const uploadingFile = { name: file.name, status: 'uploading' };
-      setFileList([uploadingFile]);
-    },
-    fileList,
-  };
-
-  const onSelectDropdownFile = (uid) => {
-    setFileList([]);
-    onSetUuid(uid);
-    if (uid) {
-      enableAskButtonAndRemoveMsg();
-    }
-  };
 
   return (
     <Layout>
