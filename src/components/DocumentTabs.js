@@ -4,9 +4,11 @@ import Content from './Content';
 import '../App.css';
 
 const DocumentTabs = ({ docList, docContent }) => (
-  <div style={{
-    minHeight: '700px', maxHeight: '700px', overflowY: 'scroll', backgroundColor: 'white', padding: '5% 5% 2% 5%', borderRadius: '1%',
-  }}
+  <div
+    style={{
+      minHeight: '700px', maxHeight: '700px', overflowY: 'scroll', backgroundColor: 'white', padding: '5% 5% 2% 5%', borderRadius: '1%',
+    }}
+    id="preview-container"
   >
     <h2 className="section-title">
       Preview
@@ -16,6 +18,7 @@ const DocumentTabs = ({ docList, docContent }) => (
     </h2>
     {docList.length > 0 && (
       <Tabs
+        rootClassName="previewTab"
         style={{
           backgroundColor: 'white', borderRadius: '10px', padding: '3%',
         }}

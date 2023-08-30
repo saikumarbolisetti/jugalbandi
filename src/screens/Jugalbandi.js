@@ -97,6 +97,19 @@ const Jugalbandi = () => {
   }, [data]);
 
   useEffect(() => {
+    setTimeout(() => {
+      const highligtedSpan = document.querySelector('.previewTab .ant-tabs-content span:first-child');
+      const { top: spanTop } = highligtedSpan?.getBoundingClientRect() || {};
+      const previewContainer = document.querySelector('#preview-container');
+      const { top: containerTop } = previewContainer?.getBoundingClientRect() || {};
+      previewContainer.scrollBy({
+        top: spanTop - containerTop,
+        behavior: 'smooth',
+      });
+    }, 1000);
+  }, [extractedText]);
+
+  useEffect(() => {
     // document.addEventListener('input', (e) => {
     //   if (e.target.className === 'react-chatbot-kit-chat-input') {
     //     if (!localStorage.getItem('uuid')) {
