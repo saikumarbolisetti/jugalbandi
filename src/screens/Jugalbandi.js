@@ -26,7 +26,9 @@ const Jugalbandi = () => {
   const [dropdownOptions, setdropdownOptions] = useState(uuidDatabase);
   const [extractedText, setExtractedText] = useState({});
 
-  const { data, loading, onLoading } = useContext(CustomContext);
+  const {
+    data, loading, onLoading, updateData,
+  } = useContext(CustomContext);
 
   const disableAskButton = () => {
     const askButton = document.querySelector('.react-chatbot-kit-chat-btn-send');
@@ -77,6 +79,32 @@ const Jugalbandi = () => {
     document.querySelector('#chat-input-info-msg')?.remove();
   };
 
+  const getPreview = async (uid, name) => {
+    onLoading(true);
+    try {
+      const file = await fetch(`https://jugalbandi-temp-dev-genericqa-fer6v2lowq-uc.a.run.app/public-text-url?uuid_number=${uid}`);
+      const link = await file.json();
+      const previewContent = await fetch(link[0]);
+      const content = await previewContent.text();
+      // eslint-disable-next-line max-len
+      updateData([{ chunks: [], source_text_link: link[0], source_text_name: name }]);
+      setExtractedText({ [name]: content });
+      onLoading(false);
+    } catch (e) {
+      onLoading(false);
+    }
+  };
+
+  const onSelectDropdownFile = (uid) => {
+    setFileList([]);
+    onSetUuid(uid);
+    if (uid) {
+      enableAskButtonAndRemoveMsg();
+      const dropdownOption = dropdownOptions.find((option) => option.value === uid);
+      getPreview(uid, dropdownOption?.label);
+    }
+  };
+
   const fileUploadProps = {
     name: 'file',
     multiple: false,
@@ -95,7 +123,9 @@ const Jugalbandi = () => {
         const uploadedFile = { name: e.file.name, status: 'done' };
         setFileList([uploadedFile]);
         enableAskButtonAndRemoveMsg();
+        // eslint-disable-next-line max-len
         onUpdateDropdownOptions({ value: result.uuid_number, label: e.file.name });
+        getPreview(result.uuid_number, e.file.name);
       }
     },
     beforeUpload: (file) => {
@@ -103,14 +133,6 @@ const Jugalbandi = () => {
       setFileList([uploadingFile]);
     },
     fileList,
-  };
-
-  const onSelectDropdownFile = (uid) => {
-    setFileList([]);
-    onSetUuid(uid);
-    if (uid) {
-      enableAskButtonAndRemoveMsg();
-    }
   };
 
   useEffect(() => {

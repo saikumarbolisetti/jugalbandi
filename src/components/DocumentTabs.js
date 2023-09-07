@@ -28,10 +28,11 @@ const DocumentTabs = ({ docList, docContent }) => (
           return {
             label: _.source_text_name,
             key: id,
-            children: <Content
-              content={docContent[_.source_text_name]}
-              highlightedPortions={_.chunks}
-            />,
+            children:
+              (<Content
+                content={docContent[_.source_text_name]}
+                highlightedPortions={_.chunks}
+              />),
           };
         })}
       />

@@ -5,9 +5,9 @@ const Content = ({ content, highlightedPortions }) => {
   const sortedArr = highlightedPortions.sort(
     (a, b) => content.indexOf(a) - content.indexOf(b),
   );
-  const startingRange = content.indexOf(sortedArr[0]);
-  const endingRange = content.indexOf(sortedArr[sortedArr.length - 1])
-  + sortedArr[sortedArr.length - 1].length;
+  const startingRange = !sortedArr.length ? 0 : content.indexOf(sortedArr[0]);
+  const endingRange = !sortedArr.length ? 0 : content.indexOf(sortedArr[sortedArr.length - 1])
+    + sortedArr[sortedArr.length - 1].length;
   sortedArr.forEach((highlightedPortion) => {
     const highlights = highlightedPortion.replaceAll('\\n \\n', '\n \n').split('\n \n').filter((str) => str !== ' ' && str !== '  ');
     highlights.forEach((highlight) => highlightedArray.push(highlight.trim().replaceAll('\\n', '')));
@@ -26,7 +26,7 @@ const Content = ({ content, highlightedPortions }) => {
     const positions = [];
     highlightsArray.forEach((highlight) => {
       if ((content.indexOf(segment) + segment.indexOf(highlight) >= startingRange
-      && content.indexOf(segment) + segment.indexOf(highlight) <= endingRange)) {
+        && content.indexOf(segment) + segment.indexOf(highlight) <= endingRange)) {
         if (segment.includes(highlight)) {
           highlighted = segment.includes(highlight);
           const startingIndex = segment.indexOf(highlight);
@@ -87,15 +87,15 @@ const Content = ({ content, highlightedPortions }) => {
               )
               : <span style={{ backgroundColor: 'yellow' }}>{segment.substring(pos.start, pos.end)}</span>}
             {(positions[index + 1] && positions[index + 1].start - pos.end !== 1)
-                && (positions[index + 1] && positions[index + 1].start - pos.end > 1)
+              && (positions[index + 1] && positions[index + 1].start - pos.end > 1)
               ? <span>{positions[index + 1].highlighted ? <span>{segment.substring(pos.end, positions[index + 1].start)}</span> : <span style={{ backgroundColor: 'yellow' }}>{segment.substring(pos.end, positions[index + 1].start)}</span>}</span> : null}
           </>
         ))}
         {segment.length - 1 - positions[positions.length - 1].end > 1 && intermediate
           && (
-          <span>
-            {segment.substring(positions[positions.length - 1].end, segment.length - 1)}
-          </span>
+            <span>
+              {segment.substring(positions[positions.length - 1].end, segment.length - 1)}
+            </span>
           )}
 
       </div>
