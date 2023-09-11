@@ -63,9 +63,9 @@ const Jugalbandi = () => {
   };
 
   const onRefresh = () => {
-    setUuid('');
-    localStorage.removeItem('uuid');
     if (fileList.length === 0) {
+      setUuid('');
+      localStorage.removeItem('uuid');
       showInfoMessage();
       disableAskButton();
     }
@@ -137,7 +137,7 @@ const Jugalbandi = () => {
 
   useEffect(() => {
     const txtContent = {};
-    if (data !== []) {
+    if (data?.length) {
       Promise.all(
         data.map((dataSource) => Api.readPdf(dataSource.source_text_link).then((response) => ({
           dataSource,
@@ -160,7 +160,7 @@ const Jugalbandi = () => {
       const { top: spanTop } = highligtedSpan?.getBoundingClientRect() || {};
       const previewContainer = document.querySelector('#preview-container');
       const { top: containerTop } = previewContainer?.getBoundingClientRect() || {};
-      previewContainer.scrollBy({
+      previewContainer?.scrollBy({
         top: spanTop - containerTop,
         behavior: 'smooth',
       });
