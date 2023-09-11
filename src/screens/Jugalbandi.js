@@ -5,7 +5,7 @@ import {
   Col, Row, Layout, message,
 } from 'antd';
 import Header from '../components/Header';
-// import Footer from '../components/Footer';
+import Footer from '../components/Footer';
 import '../App.css';
 import config from '../utlities/config';
 import MessageParser from '../utlities/MessageParser';
@@ -235,10 +235,10 @@ const Jugalbandi = () => {
           </Col>
         </Row>
       </Content>
-      {/* <Footer
+      <Footer
         footerText="Agami India, Ahuja Palace, Richmond Rd, Langford Gardens,
          Bengaluru, Karnataka 560025, team@agami.in"
-      /> */}
+      />
     </Layout>
   );
 };
