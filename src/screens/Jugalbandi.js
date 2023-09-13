@@ -257,7 +257,7 @@ const Jugalbandi = () => {
         </Row>
       </Content>
       <Footer
-        footerText="Agami India - Thoughtworks Initiative"
+        footerText="Agami India - A Thoughtworks Initiative"
       />
       {/* , Ahuja Palace, Richmond Rd, Langford Gardens,
       Bengaluru, Karnataka 560025, team@agami.in" */}
