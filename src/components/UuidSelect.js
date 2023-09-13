@@ -5,9 +5,9 @@ import {
 import React from 'react';
 
 const { Text } = Typography;
+
 const SelectBox = ({
-  valueSelected, onUpdateValue, options, onRefresh,
-  label, placeholder, isSearchEnabled, hasClearButton,
+  valueSelected, onUpdateValue, options, label,
 }) => {
   const valueChangeHandler = (value) => {
     if (onUpdateValue) {
@@ -30,17 +30,18 @@ const SelectBox = ({
           }}
         >
           <Select
-            showSearch={isSearchEnabled}
-            allowClear={hasClearButton}
-            placeholder={placeholder}
-            optionFilterProp="children"
+            value={valueSelected}
             onChange={valueChangeHandler}
+            allowClear
+            placeholder="Please Select a document"
             style={{ width: '100%' }}
-            valueSelected={valueSelected}
-            onClear={onRefresh && onRefresh}
-            filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
-            options={options}
-          />
+          >
+            {options.map((v) => (
+              <Select.Option key={v} value={v.value}>
+                {v.label}
+              </Select.Option>
+            ))}
+          </Select>
         </ConfigProvider>
       </Space.Compact>
     </div>
