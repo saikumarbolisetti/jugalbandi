@@ -33,12 +33,12 @@ const SelectBox = ({
             value={valueSelected}
             onChange={valueChangeHandler}
             allowClear
-            placeholder="Please Select a document"
+            placeholder="Select existing document"
             style={{ width: '100%' }}
           >
-            {options.map((v) => (
-              <Select.Option key={v} value={v.value}>
-                {v.label}
+            {options.map((option) => (
+              <Select.Option key={option} value={option.value}>
+                {option.label}
               </Select.Option>
             ))}
           </Select>

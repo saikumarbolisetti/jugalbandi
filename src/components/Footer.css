@@ -1,7 +1,8 @@
-.Footer-element{
-   position: fixed;
-   bottom: 0;
-   width: 100%;
-   text-align: center;
-   background-color: #ecc0ed;
+.Footer-element {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: #6f4d73;
 }
