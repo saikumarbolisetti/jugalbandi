@@ -188,7 +188,7 @@ const Jugalbandi = () => {
   return (
     <Layout>
       <Content style={{ paddingBottom: '100px', backgroundColor: '#F0F2F5' }}>
-        <Header title="Jugalbandi" />
+        <Header title="Jugalbandi" subTitle="A Thoughtworks Initiative" />
         <Row className="App-grid">
           <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
             <div
@@ -257,7 +257,8 @@ const Jugalbandi = () => {
         </Row>
       </Content>
       <Footer
-        footerText="Agami India - A Thoughtworks Initiative"
+        footerText="Agami India, Ahuja Palace, Richmond Rd, Langford Gardens,
+         Bengaluru, Karnataka 560025, team@agami.in"
       />
       {/* , Ahuja Palace, Richmond Rd, Langford Gardens,
       Bengaluru, Karnataka 560025, team@agami.in" */}
