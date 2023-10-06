@@ -1,11 +1,11 @@
-FROM node:latest as build
+FROM node:18.12.1-alpine as build
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+RUN yarn install
 COPY . .
 
-RUN npm run build
+RUN yarn build
 
 FROM nginx:alpine
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
