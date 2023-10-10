@@ -17,6 +17,7 @@ import Api from '../API/Api';
 import uuidDatabase from '../UuidDatabase';
 import SelectBox from '../components/UuidSelect';
 import FileUpload from '../components/FileUpload';
+import twLogo from '../twLogo.png';
 
 const WARNING_MESSAGE = 'Please select a document from the dropdown or upload a new file.';
 const { Content } = Layout;
@@ -188,7 +189,7 @@ const Jugalbandi = () => {
   return (
     <Layout>
       <Content style={{ paddingBottom: '100px', backgroundColor: '#F0F2F5' }}>
-        <Header title="Jugalbandi" subTitle="A Thoughtworks Initiative" />
+        <Header title="Jugalbandi" subTitle="POWERED BY " logo={twLogo} />
         <Row className="App-grid">
           <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
             <div

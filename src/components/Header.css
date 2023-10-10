@@ -12,9 +12,23 @@
 }
 
 .Header-pageHeader h3 {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .Header-title {
   font-weight: 900;
+}
+
+.powered-by {
+  display: flex;
+  align-items: center;
+}
+
+.powered-by span {
+  font-size: 14px;
+}
+
+.powered-by img {
+  height: 1rem;
+  margin-left: 4px;
 }
