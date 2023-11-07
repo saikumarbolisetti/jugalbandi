@@ -79,7 +79,7 @@ const Jugalbandi = () => {
     onLoading(true);
     try {
       const file = await fetch(
-        `https://jugalbandi-temp-dev-genericqa-fer6v2lowq-uc.a.run.app/public-text-url?uuid_number=${uid}`,
+        `https://jugalbandi-genericqa-wjevjjioua-uc.a.run.app/public-text-url?uuid_number=${uid}`,
       );
       const link = await file.json();
       const previewContent = await fetch(link[0]);
@@ -117,7 +117,7 @@ const Jugalbandi = () => {
       formData.append('files', e.file);
 
       const result = await Api.uploadFile(
-        'https://api.jugalbandi.ai/upload-files',
+        'https://jugalbandi-genericqa-wjevjjioua-uc.a.run.app/upload-files',
         formData,
       );
 
