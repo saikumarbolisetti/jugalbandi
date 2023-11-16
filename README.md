@@ -1,4 +1,4 @@
-# Jugalbandi-Revamped-UI
+# Jigyasa-Revamped-UI
 
 # Getting Started with Create React App
 

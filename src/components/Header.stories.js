@@ -6,4 +6,4 @@ export default {
   component: Header,
 };
 
-export const Primary = () => <Header title="Jugalbandi" />;
+export const Primary = () => <Header title="Jigyasa" />;

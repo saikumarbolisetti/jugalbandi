@@ -189,7 +189,7 @@ const Jugalbandi = () => {
   return (
     <Layout>
       <Content style={{ paddingBottom: '100px', backgroundColor: '#F0F2F5' }}>
-        <Header title="Jugalbandi" subTitle="POWERED BY " logo={twLogo} />
+        <Header title="Jigyasa" subTitle="POWERED BY " logo={twLogo} />
         <Row className="App-grid">
           <Col className="gutter-row" xs={24} sm={24} md={12} lg={12}>
             <div

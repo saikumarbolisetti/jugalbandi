@@ -4,7 +4,7 @@ import FeedbackButtons from '../components/FeedbackButtons';
 import BotAvatar from '../components/BotAvatar';
 
 const config = {
-  botName: 'Jugalbandi',
+  botName: 'Jigyasa',
   initialMessages: [createChatBotMessage('Select the document and type in your query')],
   BOT_AVATAR_PATH: '',
   customComponents: {
